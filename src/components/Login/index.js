@@ -8,7 +8,7 @@ class Login extends Component {
   onSubmitForm = async event => {
     event.preventDefault()
     const apiUrl = 'https://apis.ccbp.in/login'
-    const {username, password, errMsg} = this.state
+    const {username, password} = this.state
     console.log(username, password)
     const userDtls = {username, password}
     const options = {
@@ -20,6 +20,8 @@ class Login extends Component {
       const data = await response.json()
       this.setState({errMsg: false})
       Cookies.set('jwt_token', data.jwt_token)
+      const {history} = this.props
+      history.replace('/')
       //   console.log(data, errMsg)
     } else {
       this.setState({errMsg: true})
@@ -38,7 +40,7 @@ class Login extends Component {
     const {errMsg} = this.state
     // console.log(Cookies.get('jwt_token'))
     const errPara = errMsg ? (
-      <p className="err-msg">*Username and Password didn't match </p>
+      <p className="err-msg">*Username and Password did not match </p>
     ) : (
       <p>{}</p>
     )
