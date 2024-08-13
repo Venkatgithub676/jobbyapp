@@ -1,0 +1,203 @@
+.profile-search-con {
+  padding: 20px 40px 20px 40px;
+  display: flex;
+  background-color: #000000;
+  margin: auto;
+  min-height: 100vh;
+}
+
+.profile-emp-types-sal-con {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 30px;
+  margin-right: 60px;
+}
+.profile-con {
+  background-image: url(https://assets.ccbp.in/frontend/react-js/profile-bg.png);
+  width: 100%;
+  background-size: cover;
+  border-radius: 10px;
+  padding: 20px;
+}
+.profile-img {
+  width: 80px;
+}
+.profile-name {
+  font-family: 'Roboto';
+  font-size: 18px;
+  color: #6366f1;
+}
+.profile-bio {
+  font-family: 'Roboto';
+  font-size: 15px;
+  color: #2c364c;
+}
+
+.emp-types-heading {
+  font-family: 'Roboto';
+  font-size: 20px;
+  color: #ffffff;
+}
+.hr-line {
+  width: 100%;
+}
+.emp-type-ul-con {
+  padding: 0;
+  list-style-type: none;
+}
+.emp-type-li-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.emp-label {
+  font-family: 'Roboto';
+  color: #ffffff;
+  margin-left: 10px;
+}
+.sal-range-ul-con {
+  padding: 0;
+  list-style-type: none;
+}
+.sal-range-li-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.sal-label {
+  font-family: 'Roboto';
+  color: #ffffff;
+  margin-left: 10px;
+}
+
+.search-con {
+  width: 60%;
+}
+
+.search-btn-input-con {
+  width: 395px;
+  border-radius: 5px;
+  border: 1px solid #64748b;
+}
+.search-input {
+  width: 85%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #000000;
+  border: none;
+}
+.search-btn {
+  width: 15%;
+  height: 40px;
+  background-color: #272727;
+  border: none;
+}
+
+.search-icon {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.search-con-ul-con {
+  list-style-type: none;
+  padding: 0;
+}
+.search-item-li-con {
+  display: flex;
+  flex-direction: column;
+  background-color: #272727;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.search-item-logo-con {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.search-item-comp-logo {
+  width: 60px;
+  margin-right: 20px;
+}
+.search-item-title-star-con {
+  display: flex;
+  flex-direction: column;
+}
+.search-item-title {
+  font-family: 'Roboto';
+  font-size: 20px;
+  color: #ffffff;
+  margin-top: 0;
+}
+.search-item-star-rating-con {
+  display: flex;
+  align-items: center;
+}
+.search-item-star-img {
+  color: #fbbf24;
+  font-size: 20px;
+  margin-right: 5px;
+}
+.search-item-rating {
+  font-family: 'Roboto';
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.search-item-location-pkg-con {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.search-item-location-work-con {
+  display: flex;
+  align-items: center;
+}
+.search-item-location-con {
+  display: flex;
+  margin-right: 30px;
+}
+.search-item-location-icon {
+  margin-right: 5px;
+  color: #ffffff;
+  font-size: 20px;
+}
+.search-item-location {
+  font-family: 'Roboto';
+  font-size: 15px;
+  color: #ffffff;
+}
+.search-item-emp-type-con {
+  display: flex;
+  align-items: center;
+}
+.search-item-emp-type-icon {
+  margin-right: 5px;
+  color: #ffffff;
+}
+.search-item-emp-type {
+  font-family: 'Roboto';
+  font-size: 15px;
+  color: #ffffff;
+}
+.search-item-pkg-per-annum {
+  font-family: 'Roboto';
+  font-size: 15px;
+  color: #ffffff;
+}
+
+.search-item-desc-heading {
+  font-family: 'Roboto';
+  font-size: 20px;
+  color: #ffffff;
+  margin-bottom: 0;
+}
+.search-item-description {
+  font-family: 'Roboto';
+  font-size: 15px;
+  color: #ffffff;
+  margin-top: 10px;
+  line-height: 1.6;
+}
