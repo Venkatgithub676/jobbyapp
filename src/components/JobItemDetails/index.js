@@ -45,6 +45,7 @@ class JobItemDetails extends Component {
       companyWebsiteUrl: data.job_details.company_website_url,
       empType: data.job_details.employment_type,
       jobDesc: data.job_details.job_description,
+      id: data.job_details.id,
       lifeAtCompany: {
         desc: data.job_details.life_at_company.description,
         imgUrl: data.job_details.life_at_company.image_url,
@@ -64,6 +65,7 @@ class JobItemDetails extends Component {
       jobDesc: each.job_description,
       location: each.location,
       rating: each.rating,
+      id: each.id,
       title: each.title,
     }))
     this.setState({similarJobs, jobDtls, status: apiConstants.success})
@@ -84,7 +86,7 @@ class JobItemDetails extends Component {
             title,
           } = each
           return (
-            <li className="job-item-dtls-sim-jobs-li">
+            <li key={each.id} className="job-item-dtls-sim-jobs-li">
               <div className="job-item-dtls-comp-logo-con">
                 <img
                   src={companyLogoUrl}
@@ -137,7 +139,7 @@ class JobItemDetails extends Component {
       title,
     } = jobDtls
 
-    console.log(skills)
+    // console.log(skills)
     return (
       <>
         <div className="job-item-dtls-main-con">
@@ -228,6 +230,23 @@ class JobItemDetails extends Component {
     </div>
   )
 
+  failureView = () => (
+    <div className="failure-view-con">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/failure-img.png "
+        className="failure-view-img"
+        alt=""
+      />
+      <h1 className="failure-view-heading">Oops! Something Went Wrong</h1>
+      <p className="failure-view-para">
+        We cannot seem to find the page you are looking for.
+      </p>
+      <button type="button" className="failure-view-btn">
+        Retry
+      </button>
+    </div>
+  )
+
   getViews = () => {
     const {status} = this.state
     switch (status) {
@@ -235,6 +254,8 @@ class JobItemDetails extends Component {
         return this.successView()
       case apiConstants.loading:
         return this.loadingView()
+      case apiConstants.failure:
+        return this.failureView()
       default:
         return null
     }

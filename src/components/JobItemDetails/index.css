@@ -14,6 +14,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100%;
 }
 .job-item-dtls-comp-logo-con {
   display: flex;
@@ -218,4 +219,39 @@
   font-family: 'Roboto';
   font-size: 25px;
   color: #ffffff;
+}
+
+.failure-view-con {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.failure-view-img {
+  width: 40%;
+}
+
+.failure-view-heading {
+  font-family: 'Roboto';
+  color: #f1f5f9;
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+.failure-view-para {
+  font-family: 'Roboto';
+  color: #cbd5e1;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.failure-view-btn {
+  color: #ffffff;
+  width: 100px;
+  font-family: 'Roboto';
+  cursor: pointer;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  background-color: #6366f1;
 }

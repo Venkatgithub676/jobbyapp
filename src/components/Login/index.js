@@ -1,4 +1,5 @@
 import {Component} from 'react'
+import {Redirect} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import './index.css'
 
@@ -38,12 +39,17 @@ class Login extends Component {
 
   render() {
     const {errMsg} = this.state
+    const jwtToken = Cookies.get('jwt_token')
     // console.log(Cookies.get('jwt_token'))
     const errPara = errMsg ? (
       <p className="err-msg">*Username and Password did not match </p>
     ) : (
       <p>{}</p>
     )
+
+    if (jwtToken !== undefined) {
+      return <Redirect to="/" />
+    }
 
     return (
       <div className="login-bg-con">
