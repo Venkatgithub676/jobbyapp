@@ -46,15 +46,46 @@ const salaryRangesList = [
 ]
 
 class Jobs extends Component {
-  state = {profile: {}, searchItems: []}
+  state = {profile: {}, searchItems: [], empList: [], minPkg: '', searchStr: ''}
 
   componentDidMount() {
     this.getData()
   }
 
+  clickCheck = event => {
+    const {empList} = this.state
+    const val = event.target.checked
+    if (val) {
+      empList.push(event.target.value)
+      this.setState({empList}, this.getData)
+    } else {
+      const checkedVal = event.target.value
+      const indexedVal = empList.indexOf(checkedVal)
+      const filteredList = empList.filter(
+        each => empList.indexOf(each) !== indexedVal,
+      )
+      this.setState({empList: filteredList}, this.getData)
+    }
+  }
+
+  clickRadio = event => {
+    this.setState({minPkg: event.target.value}, this.getData)
+  }
+
+  changeSearch = event => {
+    console.log(event.key)
+    if (event.key === 'Enter') {
+      this.setState({searchStr: event.target.value}, this.getData)
+    }
+  }
+
   getData = async () => {
+    const {empList, minPkg, searchStr} = this.state
+    const joinedStr = empList.join(',')
+
     const profileApiUrl = 'https://apis.ccbp.in/profile'
-    const searchItemsUrl = `https://apis.ccbp.in/jobs`
+    const searchItemsUrl = `https://apis.ccbp.in/jobs?employment_type=${joinedStr}&minimum_package=${minPkg}&search=${searchStr}`
+    console.log(searchItemsUrl)
     const jwtToken = Cookies.get('jwt_token')
     const options = {
       method: 'GET',
@@ -97,7 +128,12 @@ class Jobs extends Component {
     return (
       <div className="search-con">
         <div className="search-btn-input-con">
-          <input type="search" className="search-input" />
+          <input
+            type="search"
+            className="search-input"
+            onKeyDown={this.changeSearch}
+            placeholder="Search"
+          />
           <button
             type="button"
             data-testid="searchButton"
@@ -181,7 +217,12 @@ class Jobs extends Component {
             <ul className="emp-type-ul-con">
               {employmentTypesList.map(each => (
                 <li className="emp-type-li-item" key={each.employmentTypeId}>
-                  <input id={each.employmentTypeId} type="checkbox" />
+                  <input
+                    value={each.employmentTypeId}
+                    id={each.employmentTypeId}
+                    type="checkbox"
+                    onClick={this.clickCheck}
+                  />
                   <label htmlFor={each.employmentTypeId} className="emp-label">
                     {each.label}
                   </label>
@@ -192,7 +233,13 @@ class Jobs extends Component {
             <ul className="sal-range-ul-con">
               {salaryRangesList.map(each => (
                 <li className="sal-range-li-item" key={each.salaryRangeId}>
-                  <input id={each.salaryRangeId} type="checkbox" />
+                  <input
+                    onClick={this.clickRadio}
+                    id={each.salaryRangeId}
+                    type="radio"
+                    name="radios"
+                    value={each.salaryRangeId}
+                  />
                   <label htmlFor={each.salaryRangeId} className="sal-label">
                     {each.label}
                   </label>
