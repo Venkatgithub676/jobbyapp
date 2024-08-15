@@ -14,12 +14,15 @@
   font-family: 'Roboto';
   font-size: 70px;
   color: #ffffff;
+  margin-bottom: 30px;
 }
 
 .home-para {
   font-family: 'Roboto';
   font-size: 25px;
   color: #ffffff;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
 
 .find-jobs-btn {
