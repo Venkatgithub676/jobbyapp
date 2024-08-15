@@ -2,7 +2,7 @@ import {Component} from 'react'
 import {BsSearch} from 'react-icons/bs'
 import {IoStar} from 'react-icons/io5'
 import {MdLocationOn, MdWork} from 'react-icons/md'
-
+import {Link} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import Header from '../Header'
 import './index.css'
@@ -85,7 +85,7 @@ class Jobs extends Component {
       shortBio: details.profile_details.short_bio,
     }
     // console.log(profileData)
-    console.log(updatedSearchItemsData)
+    // console.log(updatedSearchItemsData)
     this.setState({
       profile: updatedProfileData,
       searchItems: updatedSearchItemsData,
@@ -119,39 +119,41 @@ class Jobs extends Component {
               companyLogoUrl,
             } = each
             return (
-              <li className="search-item-li-con">
-                <div className="search-item-logo-con">
-                  <img
-                    src={companyLogoUrl}
-                    alt="company logo"
-                    className="search-item-comp-logo"
-                  />
-                  <div className="search-item-title-star-con">
-                    <h1 className="search-item-title">{title}</h1>
-                    <div className="search-item-star-rating-con">
-                      <IoStar className="search-item-star-img" />
-                      <span className="search-item-rating">{rating}</span>
+              <li className="search-item-li-con" key={each.id}>
+                <Link className="jobs-links" to={`/jobs/${id}`}>
+                  <div className="search-item-logo-con">
+                    <img
+                      src={companyLogoUrl}
+                      alt="company logo"
+                      className="search-item-comp-logo"
+                    />
+                    <div className="search-item-title-star-con">
+                      <h1 className="search-item-title">{title}</h1>
+                      <div className="search-item-star-rating-con">
+                        <IoStar className="search-item-star-img" />
+                        <span className="search-item-rating">{rating}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="search-item-location-pkg-con">
-                  <div className="search-item-location-work-con">
-                    <div className="search-item-location-con">
-                      <MdLocationOn className="search-item-location-icon" />
-                      <span className="search-item-location">{location}</span>
+                  <div className="search-item-location-pkg-con">
+                    <div className="search-item-location-work-con">
+                      <div className="search-item-location-con">
+                        <MdLocationOn className="search-item-location-icon" />
+                        <span className="search-item-location">{location}</span>
+                      </div>
+                      <div className="search-item-emp-type-con">
+                        <MdWork className="search-item-emp-type-icon" />
+                        <span className="search-item-emp-type">
+                          {employmentType}
+                        </span>
+                      </div>
                     </div>
-                    <div className="search-item-emp-type-con">
-                      <MdWork className="search-item-emp-type-icon" />
-                      <span className="search-item-emp-type">
-                        {employmentType}
-                      </span>
-                    </div>
+                    <p className="search-item-pkg-per-annum">{pkgPerAnnum}</p>
                   </div>
-                  <p className="search-item-pkg-per-annum">{pkgPerAnnum}</p>
-                </div>
-                <hr className="hr-line" />
-                <h1 className="search-item-desc-heading">Description</h1>
-                <p className="search-item-description">{jobDescription}</p>
+                  <hr className="hr-line" />
+                  <h1 className="search-item-desc-heading">Description</h1>
+                  <p className="search-item-description">{jobDescription}</p>
+                </Link>
               </li>
             )
           })}

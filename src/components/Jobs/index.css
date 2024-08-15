@@ -103,6 +103,10 @@
   list-style-type: none;
   padding: 0;
 }
+
+.jobs-links {
+  text-decoration: none;
+}
 .search-item-li-con {
   display: flex;
   flex-direction: column;

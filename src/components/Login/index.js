@@ -9,7 +9,7 @@ class Login extends Component {
     event.preventDefault()
     const apiUrl = 'https://apis.ccbp.in/login'
     const {username, password} = this.state
-    console.log(username, password)
+    // console.log(username, password)
     const userDtls = {username, password}
     const options = {
       method: 'POST',
