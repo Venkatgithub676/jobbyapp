@@ -56,7 +56,7 @@ class Jobs extends Component {
   state = {
     profile: {},
     searchItems: [],
-
+    notFound: false,
     empList: [],
     minPkg: '',
     searchStr: '',
@@ -91,9 +91,9 @@ class Jobs extends Component {
     this.setState({searchStr: event.target.value})
   }
 
-  searchBtnClick = event => {
+  searchBtnClick = () => {
     const {searchStr} = this.state
-    console.log(event.target.value)
+    // console.log(event.target.value)
     this.setState({searchStr}, this.getData)
   }
 
@@ -154,18 +154,26 @@ class Jobs extends Component {
         title: each.title,
       }))
       // console.log(profileData)
-      // console.log(updatedSearchItemsData)
-      this.setState({
-        searchItems: updatedSearchItemsData,
-        status: apiConstants.success,
-      })
+      //   console.log(updatedSearchItemsData === 0, updatedSearchItemsData)
+      if (updatedSearchItemsData.length === 0) {
+        this.setState({
+          searchItems: updatedSearchItemsData,
+          status: apiConstants.success,
+          notFound: true,
+        })
+      } else {
+        this.setState({
+          searchItems: updatedSearchItemsData,
+          status: apiConstants.success,
+          notFound: false,
+        })
+      }
     } else {
       this.setState({status: apiConstants.failure})
     }
   }
 
   getData = async () => {
-    this.setState({status: apiConstants.loading})
     this.getSearchItemsData()
     this.getProfileData()
   }
@@ -187,13 +195,17 @@ class Jobs extends Component {
       <img
         src="https://assets.ccbp.in/frontend/react-js/failure-img.png "
         className="failure-view-img"
-        alt=""
+        alt="failure view"
       />
       <h1 className="failure-view-heading">Oops! Something Went Wrong</h1>
       <p className="failure-view-para">
         We cannot seem to find the page you are looking for.
       </p>
-      <button type="button" className="failure-view-btn">
+      <button
+        type="button"
+        onClick={this.getSearchItemsData()}
+        className="failure-view-btn"
+      >
         Retry
       </button>
     </div>
@@ -225,7 +237,7 @@ class Jobs extends Component {
                   <h1 className="search-item-title">{title}</h1>
                   <div className="search-item-star-rating-con">
                     <IoStar className="search-item-star-img" />
-                    <span className="search-item-rating">{rating}</span>
+                    <p className="search-item-rating">{rating}</p>
                   </div>
                 </div>
               </div>
@@ -233,13 +245,11 @@ class Jobs extends Component {
                 <div className="search-item-location-work-con">
                   <div className="search-item-location-con">
                     <MdLocationOn className="search-item-location-icon" />
-                    <span className="search-item-location">{location}</span>
+                    <p className="search-item-location">{location}</p>
                   </div>
                   <div className="search-item-emp-type-con">
                     <MdWork className="search-item-emp-type-icon" />
-                    <span className="search-item-emp-type">
-                      {employmentType}
-                    </span>
+                    <p className="search-item-emp-type">{employmentType}</p>
                   </div>
                 </div>
                 <p className="search-item-pkg-per-annum">{pkgPerAnnum}</p>
@@ -269,12 +279,11 @@ class Jobs extends Component {
   )
 
   searchCon = () => {
-    const {searchItems} = this.state
+    const {searchItems, notFound, searchStr} = this.state
     // console.log(searchItems.length)
-    const showComponent =
-      searchItems.length === 0
-        ? this.noItemFound()
-        : this.listOfItems(searchItems)
+    const showComponent = notFound
+      ? this.noItemFound()
+      : this.listOfItems(searchItems)
     return (
       <div className="search-con">
         <div className="search-btn-input-con">
@@ -284,6 +293,7 @@ class Jobs extends Component {
             onChange={this.changeSearch}
             placeholder="Search"
             id="searchInput"
+            value={searchStr}
           />
           <label htmlFor="searchInput" className="input-label">
             <button
@@ -315,7 +325,11 @@ class Jobs extends Component {
 
   profileFailureView = () => (
     <div className="profile-failure-con">
-      <button type="button" className="failure-view-btn">
+      <button
+        type="button"
+        onClick={this.getProfileData}
+        className="failure-view-btn"
+      >
         Retry
       </button>
     </div>
@@ -359,7 +373,7 @@ class Jobs extends Component {
             {this.getProfileDataViews()}
             <hr className="hr-line" />
 
-            <h1 className="emp-types-heading">Types of Employment</h1>
+            <h1 className="emp-types-heading">Type of Employment</h1>
             <ul className="emp-type-ul-con">
               {employmentTypesList.map(each => (
                 <li className="emp-type-li-item" key={each.employmentTypeId}>
@@ -376,6 +390,7 @@ class Jobs extends Component {
               ))}
             </ul>
             <hr className="hr-line" />
+            <h1 className="emp-types-heading">Salary Range</h1>
             <ul className="sal-range-ul-con">
               {salaryRangesList.map(each => (
                 <li className="sal-range-li-item" key={each.salaryRangeId}>
