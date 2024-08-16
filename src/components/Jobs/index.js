@@ -52,6 +52,13 @@ const apiConstants = {
   failure: 'FAILURE',
   loading: 'LOADING',
 }
+
+const apiConstants1 = {
+  initial: 'INITIAL',
+  success: 'SUCCESS',
+  failure: 'FAILURE',
+  loading: 'LOADING',
+}
 class Jobs extends Component {
   state = {
     profile: {},
@@ -61,6 +68,7 @@ class Jobs extends Component {
     minPkg: '',
     searchStr: '',
     status: apiConstants.initial,
+    status1: apiConstants1.initial,
   }
 
   componentDidMount() {
@@ -94,11 +102,11 @@ class Jobs extends Component {
   searchBtnClick = () => {
     const {searchStr} = this.state
     // console.log(event.target.value)
-    this.setState({searchStr}, this.getData)
+    this.setState({searchStr}, this.getSearchItemsData)
   }
 
   getProfileData = async () => {
-    this.setState({status: apiConstants.loading})
+    this.setState({status1: apiConstants1.loading})
     const profileApiUrl = 'https://apis.ccbp.in/profile'
     const jwtToken = Cookies.get('jwt_token')
     const options = {
@@ -118,10 +126,10 @@ class Jobs extends Component {
       }
       this.setState({
         profile: updatedProfileData,
-        status: apiConstants.success,
+        status1: apiConstants1.success,
       })
     } else {
-      this.setState({status: apiConstants.failure})
+      this.setState({status1: apiConstants1.failure})
     }
   }
 
@@ -130,7 +138,7 @@ class Jobs extends Component {
     const joinedStr = empList.join(',')
 
     const searchItemsUrl = `https://apis.ccbp.in/jobs?employment_type=${joinedStr}&minimum_package=${minPkg}&search=${searchStr}`
-    // console.log(searchItemsUrl)
+    console.log(searchItemsUrl)
     const jwtToken = Cookies.get('jwt_token')
     const options = {
       method: 'GET',
@@ -203,7 +211,7 @@ class Jobs extends Component {
       </p>
       <button
         type="button"
-        onClick={this.getSearchItemsData()}
+        onClick={this.getSearchItemsData}
         className="failure-view-btn"
       >
         Retry
@@ -292,19 +300,17 @@ class Jobs extends Component {
             className="search-input"
             onChange={this.changeSearch}
             placeholder="Search"
-            id="searchInput"
             value={searchStr}
           />
-          <label htmlFor="searchInput" className="input-label">
-            <button
-              type="button"
-              data-testid="searchButton"
-              className="search-btn"
-              onClick={this.searchBtnClick}
-            >
-              <BsSearch className="search-icon" alt="search icon" />
-            </button>
-          </label>
+
+          <button
+            type="button"
+            data-testid="searchButton"
+            className="search-btn"
+            onClick={this.searchBtnClick}
+          >
+            <BsSearch className="search-icon" alt="search icon" />
+          </button>
         </div>
         {showComponent}
       </div>
@@ -336,13 +342,13 @@ class Jobs extends Component {
   )
 
   getProfileDataViews = () => {
-    const {status} = this.state
-    switch (status) {
-      case apiConstants.success:
+    const {status1} = this.state
+    switch (status1) {
+      case apiConstants1.success:
         return this.profileSuccessView()
-      case apiConstants.failure:
+      case apiConstants1.failure:
         return this.profileFailureView()
-      case apiConstants.loading:
+      case apiConstants1.loading:
         return this.loadingProfileView()
       default:
         return null
