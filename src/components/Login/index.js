@@ -4,7 +4,7 @@ import Cookies from 'js-cookie'
 import './index.css'
 
 class Login extends Component {
-  state = {username: '', password: '', errMsg: false}
+  state = {username: '', password: '', msg: '', errMsg: false}
 
   onSubmitForm = async event => {
     event.preventDefault()
@@ -17,15 +17,15 @@ class Login extends Component {
       body: JSON.stringify(userDtls),
     }
     const response = await fetch(apiUrl, options)
+    const data = await response.json()
     if (response.ok) {
-      const data = await response.json()
       this.setState({errMsg: false})
-      Cookies.set('jwt_token', data.jwt_token)
+      Cookies.set('jwt_token', data.jwt_token, {expires: 30})
       const {history} = this.props
       history.replace('/')
       //   console.log(data, errMsg)
     } else {
-      this.setState({errMsg: true})
+      this.setState({errMsg: true, msg: data.error_msg})
     }
   }
 
@@ -38,14 +38,10 @@ class Login extends Component {
   }
 
   render() {
-    const {errMsg} = this.state
+    const {errMsg, msg} = this.state
     const jwtToken = Cookies.get('jwt_token')
     // console.log(Cookies.get('jwt_token'))
-    const errPara = errMsg ? (
-      <p className="err-msg">*Username and Password did not match </p>
-    ) : (
-      <p>{}</p>
-    )
+    const errPara = errMsg ? <p className="err-msg">{msg} </p> : <p>{}</p>
 
     if (jwtToken !== undefined) {
       return <Redirect to="/" />
