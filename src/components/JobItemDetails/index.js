@@ -106,7 +106,7 @@ class JobItemDetails extends Component {
                 </div>
               </div>
               <h1 className="job-item-dtls-sim-desc-heading">Description</h1>
-              <p className="job-item-dtls-desc-para">{jobDesc}</p>
+              <p className="job-item-dtls-sim-desc-para">{jobDesc}</p>
 
               <div className="job-item-dtls-location-work-con">
                 <div className="job-item-dtls-location-con">

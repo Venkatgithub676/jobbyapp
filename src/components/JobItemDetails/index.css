@@ -3,10 +3,21 @@
   min-height: 90vh;
   padding: 40px;
 }
+
+@media screen and (max-width: 576px) {
+  .job-item-dtls-bg-con {
+    padding: 20px 10px 10px 10px;
+  }
+}
 .job-item-dtls-main-con {
   background-color: #272727;
   border-radius: 10px;
   padding: 30px;
+}
+@media screen and (max-width: 576px) {
+  .job-item-dtls-main-con {
+    padding: 20px;
+  }
 }
 
 .loader-container {
@@ -21,11 +32,21 @@
   align-items: center;
 }
 
+@media screen and (max-width: 576px) {
+  .job-item-dtls-comp-logo-con {
+  }
+}
+
 .job-item-dtls-comp-logo {
   width: 70px;
   margin-right: 20px;
 }
-
+@media screen and (max-width: 576px) {
+  .job-item-dtls-comp-logo {
+    width: 50px;
+    margin-right: 10px;
+  }
+}
 .job-item-dtls-comp-title {
   font-family: 'Roboto';
   font-size: 25px;
@@ -33,7 +54,12 @@
   margin-top: 0;
   margin-bottom: 10px;
 }
-
+@media screen and (max-width: 576px) {
+  .job-item-dtls-comp-title {
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+}
 .job-item-dtls-comp-logo-star-con {
   display: flex;
   align-items: center;
@@ -44,13 +70,22 @@
   font-size: 25px;
   color: #fbbf24;
 }
+@media screen and (max-width: 576px) {
+  .job-item-dtls-comp-logo-star-img {
+    font-size: 15px;
+  }
+}
 .job-item-dtls-comp-logo-rating {
   font-family: 'Roboto';
   font-size: 25px;
   margin-left: 5px;
   color: #ffffff;
 }
-
+@media screen and (max-width: 576px) {
+  .job-item-dtls-comp-logo-rating {
+    font-size: 15px;
+  }
+}
 .job-item-dtls-location-pkg-con {
   display: flex;
   align-items: center;
@@ -72,11 +107,21 @@
   color: #ffffff;
   margin-right: 5px;
 }
+@media screen and (max-width: 576px) {
+  .job-item-dtls-location-icon {
+    font-size: 15px;
+  }
+}
 
 .job-item-dtls-location {
   font-size: 20px;
   font-family: 'Roboto';
   color: #ffffff;
+}
+@media screen and (max-width: 576px) {
+  .job-item-dtls-location {
+    font-size: 13px;
+  }
 }
 
 .job-item-dtls-emp-type-con {
@@ -89,16 +134,31 @@
   color: #ffffff;
   margin-right: 5px;
 }
+@media screen and (max-width: 576px) {
+  .job-item-dtls-emp-type-icon {
+    font-size: 15px;
+  }
+}
 .job-item-dtls-emp-type {
   font-size: 20px;
   font-family: 'Roboto';
   color: #ffffff;
+}
+@media screen and (max-width: 576px) {
+  .job-item-dtls-emp-type {
+    font-size: 13px;
+  }
 }
 
 .job-item-dtls-pkg-per-annum {
   font-size: 20px;
   font-family: 'Roboto';
   color: #ffffff;
+}
+@media screen and (max-width: 576px) {
+  .job-item-dtls-pkg-per-annum {
+    font-size: 15px;
+  }
 }
 .job-item-dtls-hr-line {
   color: #ffffff;
@@ -117,6 +177,11 @@
   font-size: 25px;
   color: #ffffff;
 }
+@media screen and (max-width: 576px) {
+  .job-item-dtls-desc {
+    font-size: 15px;
+  }
+}
 
 .job-item-dtls-visit-btn {
   background-color: transparent;
@@ -130,7 +195,11 @@
   display: flex;
   align-items: center;
 }
-
+@media screen and (max-width: 576px) {
+  .job-item-dtls-visit-btn {
+    font-size: 15px;
+  }
+}
 .job-item-dtls-visit-icon {
   margin-left: 5px;
 }
@@ -142,6 +211,12 @@
   line-height: 1.5;
 }
 
+@media screen and (max-width: 576px) {
+  .job-item-dtls-desc-para {
+    font-size: 15px;
+  }
+}
+
 .job-item-dtls-skills-con {
   display: flex;
   flex-direction: column;
@@ -151,6 +226,11 @@
   font-family: 'Roboto';
   color: #ffffff;
   font-size: 25px;
+}
+@media screen and (max-width: 576px) {
+  .job-item-dtls-skills-heading {
+    font-size: 15px;
+  }
 }
 .job-item-dtls-skills-ul-con {
   display: flex;
@@ -165,18 +245,33 @@
   width: 30%;
   margin-bottom: 40px;
 }
+@media screen and (max-width: 576px) {
+  .job-item-dtls-skills-li-con {
+    width: 50%;
+    margin-bottom: 10px;
+  }
+}
 
 .job-item-dtls-skills-li-img {
   width: 50px;
   margin-right: 10px;
 }
 
+@media screen and (max-width: 576px) {
+  .job-item-dtls-skills-li-img {
+    width: 30px;
+  }
+}
 .job-item-dtls-skills-li-name {
   font-family: 'Roboto';
   font-size: 18px;
   color: #ffffff;
 }
-
+@media screen and (max-width: 576px) {
+  .job-item-dtls-skills-li-name {
+    font-size: 15px;
+  }
+}
 .job-item-dtls-life-con {
   display: flex;
   flex-direction: column;
@@ -187,10 +282,19 @@
   font-size: 25px;
   color: #ffffff;
 }
-
+@media screen and (max-width: 576px) {
+  .job-item-dtls-life-heading {
+    font-size: 15px;
+  }
+}
 .job-item-dtls-life-desc-con {
   display: flex;
   justify-content: space-between;
+}
+@media screen and (max-width: 576px) {
+  .job-item-dtls-life-desc-con {
+    flex-direction: column;
+  }
 }
 
 .job-item-dtls-life-desc-para {
@@ -200,8 +304,19 @@
   color: #ffffff;
   width: 50%;
 }
+@media screen and (max-width: 576px) {
+  .job-item-dtls-life-desc-para {
+    width: 100%;
+    font-size: 15px;
+  }
+}
 .job-item-dtls-life-img {
   width: 30%;
+}
+@media screen and (max-width: 576px) {
+  .job-item-dtls-life-img {
+    width: 100%;
+  }
 }
 
 .job-item-dtls-sim-jobs-ul {
@@ -209,21 +324,52 @@
   flex-wrap: wrap;
   padding: 0;
   list-style-type: none;
-  justify-content: space-between;
 }
 .job-item-dtls-sim-jobs-li {
-  width: 30%;
+  width: 40%;
   background-color: #272727;
   border-radius: 10px;
   padding: 30px;
+  margin-bottom: 30px;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (max-width: 576px) {
+  .job-item-dtls-sim-jobs-li {
+    width: 100%;
+    margin-right: 0;
+    padding: 20px;
+  }
 }
 
 .job-item-dtls-sim-desc-heading {
   font-family: 'Roboto';
-  font-size: 25px;
+  font-size: 20px;
   color: #ffffff;
+  margin-top: 30px;
+  margin-bottom: 10px;
 }
 
+@media screen and (max-width: 576px) {
+  .job-item-dtls-sim-desc-heading {
+    font-size: 18px;
+  }
+}
+
+.job-item-dtls-sim-desc-para {
+  font-family: 'Roboto';
+  font-size: 16px;
+  color: #f1f5f9;
+  line-height: 1.5;
+  margin-top: 5px;
+}
+
+@media screen and (max-width: 576px) {
+  .job-item-dtls-sim-desc-para {
+    font-size: 13px;
+  }
+}
 .failure-view-con {
   display: flex;
   flex-direction: column;

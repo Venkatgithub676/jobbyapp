@@ -5,7 +5,11 @@
   background-color: #272727;
   padding: 20px 30px 20px 30px;
 }
-
+@media screen and (max-width: 576px) {
+  .nav-con {
+    padding: 10px 15px 10px 15px;
+  }
+}
 .link-img {
   text-decoration: none;
 }
@@ -42,4 +46,36 @@
   font-weight: 500;
   font-family: 'Roboto';
   border-radius: 5px;
+}
+
+.medium-devices-con {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 55%;
+}
+@media screen and (max-width: 576px) {
+  .medium-devices-con {
+    display: none;
+  }
+}
+.low-devices-ul-con {
+  display: none;
+}
+
+@media screen and (max-width: 576px) {
+  .low-devices-ul-con {
+    display: flex;
+    width: 40%;
+    list-style-type: none;
+    padding: 0;
+    justify-content: space-between;
+  }
+}
+
+.low-device-link {
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }

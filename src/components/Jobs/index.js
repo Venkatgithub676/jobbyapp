@@ -63,7 +63,7 @@ class Jobs extends Component {
   state = {
     profile: {},
     searchItems: [],
-    notFound: false,
+
     empList: [],
     minPkg: '',
     searchStr: '',
@@ -77,16 +77,13 @@ class Jobs extends Component {
 
   clickCheck = event => {
     const {empList} = this.state
-    const val = event.target.checked
-    if (val) {
-      empList.push(event.target.value)
+    const checkedVal = event.target.value
+    const valIncluded = empList.includes(checkedVal)
+    if (!valIncluded) {
+      empList.push(checkedVal)
       this.setState({empList}, this.getData)
     } else {
-      const checkedVal = event.target.value
-      const indexedVal = empList.indexOf(checkedVal)
-      const filteredList = empList.filter(
-        each => empList.indexOf(each) !== indexedVal,
-      )
+      const filteredList = empList.filter(each => each !== checkedVal)
       this.setState({empList: filteredList}, this.getData)
     }
   }
@@ -370,11 +367,30 @@ class Jobs extends Component {
   }
 
   render() {
+    const {searchStr} = this.state
     return (
       <div>
         <Header />
 
         <div className="profile-search-con">
+          <div className="search-btn-input-con1">
+            <input
+              type="search"
+              className="search-input"
+              onChange={this.changeSearch}
+              placeholder="Search"
+              value={searchStr}
+            />
+
+            <button
+              type="button"
+              data-testid="searchButton"
+              className="search-btn"
+              onClick={this.searchBtnClick}
+            >
+              <BsSearch className="search-icon" alt="search icon" />
+            </button>
+          </div>
           <div className="profile-emp-types-sal-con">
             {this.getProfileDataViews()}
             <hr className="hr-line" />
