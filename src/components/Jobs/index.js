@@ -63,7 +63,6 @@ class Jobs extends Component {
   state = {
     profile: {},
     searchItems: [],
-
     empList: [],
     minPkg: '',
     searchStr: '',
@@ -131,6 +130,7 @@ class Jobs extends Component {
   }
 
   getSearchItemsData = async () => {
+    this.setState({status: apiConstants.loading})
     const {empList, minPkg, searchStr} = this.state
     const joinedStr = empList.join(',')
 
@@ -160,19 +160,11 @@ class Jobs extends Component {
       }))
       // console.log(profileData)
       //   console.log(updatedSearchItemsData === 0, updatedSearchItemsData)
-      if (updatedSearchItemsData.length === 0) {
-        this.setState({
-          searchItems: updatedSearchItemsData,
-          status: apiConstants.success,
-          notFound: true,
-        })
-      } else {
-        this.setState({
-          searchItems: updatedSearchItemsData,
-          status: apiConstants.success,
-          notFound: false,
-        })
-      }
+
+      this.setState({
+        searchItems: updatedSearchItemsData,
+        status: apiConstants.success,
+      })
     } else {
       this.setState({status: apiConstants.failure})
     }
@@ -284,11 +276,12 @@ class Jobs extends Component {
   )
 
   searchCon = () => {
-    const {searchItems, notFound, searchStr} = this.state
+    const {searchItems, searchStr} = this.state
     // console.log(searchItems.length)
-    const showComponent = notFound
-      ? this.noItemFound()
-      : this.listOfItems(searchItems)
+    const showComponent =
+      searchItems.length === 0
+        ? this.noItemFound()
+        : this.listOfItems(searchItems)
     return (
       <div className="search-con">
         <div className="search-btn-input-con">
