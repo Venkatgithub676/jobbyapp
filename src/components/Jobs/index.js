@@ -133,6 +133,7 @@ class Jobs extends Component {
     this.setState({status: apiConstants.loading})
     const {empList, minPkg, searchStr} = this.state
     const joinedStr = empList.join(',')
+    console.log(joinedStr)
 
     const searchItemsUrl = `https://apis.ccbp.in/jobs?employment_type=${joinedStr}&minimum_package=${minPkg}&search=${searchStr}`
     console.log(searchItemsUrl)
