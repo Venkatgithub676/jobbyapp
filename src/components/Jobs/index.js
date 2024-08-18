@@ -80,15 +80,15 @@ class Jobs extends Component {
     const valIncluded = empList.includes(checkedVal)
     if (!valIncluded) {
       empList.push(checkedVal)
-      this.setState({empList}, this.getData)
+      this.setState({empList}, this.getSearchItemsData)
     } else {
       const filteredList = empList.filter(each => each !== checkedVal)
-      this.setState({empList: filteredList}, this.getData)
+      this.setState({empList: filteredList}, this.getSearchItemsData)
     }
   }
 
   clickRadio = event => {
-    this.setState({minPkg: event.target.value}, this.getData)
+    this.setState({minPkg: event.target.value}, this.getSearchItemsData)
   }
 
   changeSearch = event => {
@@ -314,7 +314,7 @@ class Jobs extends Component {
     return (
       <div className="profile-con">
         <img src={profileImgUrl} alt="profile" className="profile-img" />
-        <h1 className="profile-name">{name}</h1>
+        <h1 className="profile-name">Venkateswara Rao Boddapati</h1>
         <p className="profile-bio">{shortBio}</p>
       </div>
     )
