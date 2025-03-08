@@ -4,7 +4,7 @@ If we dive into the application, you will come to know a bunch of job details wh
 
 To understand more, Please click the below link to explore it and feel free to share your suggestions with me. 
 
-https://jobbyappv.ccbp.tech/
+https://jobbyappbyv.ccbp.tech/
 username: rahul
 password: rahul@2021
 
